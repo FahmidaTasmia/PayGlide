@@ -15,7 +15,23 @@ loginForm.addEventListener("submit", function(event){
         loginMessage.classList.remove("hidden");
         return;
     }
+     // Validate PIN (must be exactly 6 digits)
+    if(!/^\d{6}$/.test(pinNumber)){
+        loginMessage.textContent = "PIN must be exactly 6 digits !";
+        loginMessage.classList.remove("hidden");
+        loginMessage.classList.add("text-red-500");
+        return ;
+    }
 
-   
+    //simulate a successful login 
+    loginMessage.textContent = "Login successful!";
+    loginMessage.classList.remove("hidden");
+    loginMessage.classList.remove("text-red-500");
+    loginMessage.classList.add("text-green-500");
+
+    setTimeout(() => {
+        window.location.href = "/home.html";
+    }, 2000);
+
 
 });
